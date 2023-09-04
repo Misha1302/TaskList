@@ -1,8 +1,8 @@
+namespace WebApplication1.Controllers;
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
-
-namespace WebApplication1.Controllers;
 
 public class HomeController : Controller
 {
@@ -13,19 +13,17 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index() => View();
+
+    public string Square(int a, int h)
     {
-        return View();
+        double s = a * h / 2f;
+        return $"Площадь треугольника с основанием {a} и высотой {h} равна {s}";
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+    public IActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    public IActionResult Error() => View(new ErrorViewModel
+        { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
