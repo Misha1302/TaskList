@@ -56,7 +56,11 @@ app.MapPost("/login", (Person loginData) =>
     var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
     // формируем ответ
-    var response = (access_token: encodedJwt, username: person.Email);
+    var response = new
+    {
+        access_token = encodedJwt,
+        username = person.Email
+    };
 
     return Results.Json(response);
 });

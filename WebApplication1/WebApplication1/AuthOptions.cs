@@ -9,5 +9,11 @@ public static class AuthOptions
     public const string Audience = "MyAuthClient"; // потребитель токена
     private const string Key = "mysupersecret_secretkey!12345678"; // ключ для шифрации
 
-    public static SymmetricSecurityKey GetSymmetricSecurityKey() => new(Encoding.UTF8.GetBytes(Key));
+    public static SymmetricSecurityKey GetSymmetricSecurityKey()
+    {
+        if (Key.Length < 32)
+            throw new InvalidOperationException("Len of key must be greater than 32");
+
+        return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Key));
+    }
 }
