@@ -1,4 +1,4 @@
-namespace WebApplication1.Controllers;
+﻿namespace WebApplication1.Controllers;
 
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
